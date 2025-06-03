@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Comisiones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Comisiones</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="asesores">Asesores</button>
+            <button class="tab-button" data-tab="ventas">Ventas</button>
+            <button class="tab-button" data-tab="reportes">Reportes</button>
+        </div>
+        
+        <!-- Pestaña de Asesores -->
+        <div id="asesores" class="tab-content active">
+            <div class="section">
+                <h2>Listado de Asesores</h2>
+                <div id="asesores-list" class="grid-container"></div>
+                
+                <h2>Agregar Nuevo Asesor</h2>
+                <form id="form-asesor" class="form-style">
+                    <input type="text" id="nombre-asesor" placeholder="Nombre" required>
+                    <input type="number" id="comision-asesor" placeholder="% Comisión" min="0" max="100" required>
+                    <button type="submit">Agregar Asesor</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Pestaña de Ventas -->
+        <div id="ventas" class="tab-content">
+            <div class="section">
+                <h2>Registrar Nueva Venta</h2>
+                <form id="form-venta" class="form-style">
+                    <select id="select-asesor" required>
+                        <option value="">Seleccione un asesor</option>
+                    </select>
+                    <input type="text" id="nombre-venta" placeholder="Nombre venta" required>
+                    <input type="number" id="monto-venta" placeholder="Monto" min="0" step="0.01" required>
+                    <input type="date" id="fecha-venta">
+                    <button type="submit">Registrar Venta</button>
+                </form>
+                
+                <h2>Ventas Registradas</h2>
+                <div id="ventas-list" class="grid-container"></div>
+            </div>
+        </div>
+        
+        <!-- Pestaña de Reportes -->
+        <div id="reportes" class="tab-content">
+            <div class="section">
+                <h2>Reporte de Comisiones</h2>
+                <div class="filtros">
+                    <select id="filtro-asesor">
+                        <option value="0">Todos los asesores</option>
+                    </select>
+                    <input type="date" id="fecha-inicio">
+                    <input type="date" id="fecha-fin">
+                    <button id="generar-reporte">Generar Reporte</button>
+                    <button id="exportar-reporte">Exportar a CSV</button>
+                </div>
+                
+                <div id="reporte-comisiones"></div>
+                
+                <div class="resumen">
+                    <h3>Resumen General</h3>
+                    <div id="resumen-general" class="grid-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
